@@ -1,0 +1,39 @@
+services:
+  app1:
+    build: ./app1-nginx
+    image: custom-nginx:1.0
+    ports:
+      - "8081:80"
+
+  app2:
+    build: ./app2-apache
+    image: custom-apache:1.0
+    ports:
+      - "8082:80"
+
+  app3:
+    build: ./app3-redis
+    image: custom-redis:1.0
+    ports:
+      - "6379:6379"
+
+  app4:
+    build: ./app4-postgres
+    image: custom-postgres:1.0
+    environment:
+      POSTGRES_PASSWORD: postgres-password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app5:
+    build: ./app5-alpine
+    image: alpine-worker:1.0
+
+volumes:
+  pgdata:
+
+
+#Running Multiple Containers
+#To start all the services defined in the docker-compose.yml file, navigate to the directory containing
