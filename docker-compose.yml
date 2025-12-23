@@ -5,6 +5,12 @@ services:
     container_name: app1
     ports:
       - "8081:80"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
 
   app2:
     build: ./app2-apache
@@ -12,12 +18,19 @@ services:
     container_name: app2
     ports:
       - "8082:80"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
 
   app3:
     image: redis:7
     container_name: app3
     ports:
       - "6379:6379"
+    restart: always
 
   app4:
     image: postgres:14
@@ -28,11 +41,13 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    restart: always
 
   app5:
     build: ./app5-alpine
     image: alpine-worker:1.0
     container_name: app5
+    restart: always
 
 volumes:
   pgdata:
