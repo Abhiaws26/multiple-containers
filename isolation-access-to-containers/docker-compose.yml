@@ -12,7 +12,7 @@ services:
   api:
     image: alpine
     container_name: api
-    command: sleep 3600
+    command: sleep 300
     networks:
       - frontend-net
       - backend-net
