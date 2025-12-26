@@ -24,7 +24,7 @@ services:
     env_file:
       - .env
     environment:
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_password.txt
+      POSTGRES_PASSWORD_FILE: ./secrets/db_password.txt
     secrets:
       - db_password
     networks:
