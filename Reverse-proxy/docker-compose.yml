@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  proxy:
+    image: nginx:alpine
+    container_name: reverse-proxy
+    ports:
+      - "80:80" 
+    volumes:
+        - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - public
+      - frontend-net
+      - backend-net
+      
+    depends_on:
+      - frontend
+      - api
+
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    networks:
+      - frontend-net
+
+  api:
+    build: ./api
+    networks:
+      - backend-net
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5 
+
+networks:
+  public:
+  frontend-net:
+  backend-net:
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt   
+  
