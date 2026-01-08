@@ -1,14 +1,19 @@
 #!/bin/sh
 
 echo "Starting application..."
-sleep 10   # simulate slow startup
 
-echo "OK" > /tmp/ready
+# Start nginx in background
+nginx
 
-while true; do
-  if [ -f /tmp/fail ]; then
-    echo "Application failure detected"
-    rm -f /tmp/ready
-  fi
+# Wait until nginx is actually serving traffic
+until curl -sf http://localhost >/dev/null; do
+  echo "Waiting for nginx to be ready..."
   sleep 2
 done
+
+# Mark application as healthy
+echo "App is ready"
+touch /tmp/ready
+
+# Keep container running
+tail -f /dev/null
