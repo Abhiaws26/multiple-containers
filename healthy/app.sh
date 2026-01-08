@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Starting application..."
+echo "Starting application...But will not become ready . This is just a test."
 
 nginx
 
