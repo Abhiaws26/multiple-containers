@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  green:
+    image: hashicorp/http-echo
+    command: ["-text=Hello from GREEN v2"]
+    networks:
+      - bg-net
+    deploy:
+      replicas: 2
+
+networks:
+  bg-net:
+    external: true
