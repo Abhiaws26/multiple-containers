@@ -1,13 +1,15 @@
-version: "3.9"
+version: "3.8"
 
 services:
-  blue:
-    image: hashicorp/http-echo
-    command: ["-text=Hello from BLUE v1"]
+  blue_app:
+    image: bg-app:latest
+    command: ["v1"]
     networks:
       - bg-net
     deploy:
       replicas: 2
+      restart_policy:
+        condition: on-failure
 
 networks:
   bg-net:

@@ -1,13 +1,15 @@
 version: "3.9"
 
 services:
-  green:
-    image: hashicorp/http-echo
-    command: ["-text=Hello from GREEN v2"]
+  green :
+    image: bg-app:latest
+    command: ["v2"]
     networks:
-      - bg-net
+      - bg-net  
     deploy:
       replicas: 2
+      restart policy :
+        condition: on-failure
 
 networks:
   bg-net:
