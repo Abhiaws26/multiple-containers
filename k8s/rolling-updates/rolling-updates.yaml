@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment  
 metadata:
-  name: rolling-update-demo
+  name: rolling-update
+  namespace: rolling-update-ns
 spec:
   replicas: 3 
   strategy:
