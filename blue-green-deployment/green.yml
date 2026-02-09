@@ -1,15 +1,21 @@
-version: "3.9"
+version: "3.8"
 
 services:
-  green :
-    image: bg-app:latest
-    command: ["v2"]
+  lb:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
     networks:
-      - bg-net  
+      - bg-net
+    configs:
+      - source: nginx_green_conf
+        target: /etc/nginx/conf.d/default.conf
     deploy:
-      replicas: 2
-      restart policy :
-        condition: on-failure
+      replicas: 1
+
+configs:
+  nginx_green_conf:
+    file: ./nginx-green.conf
 
 networks:
   bg-net:
