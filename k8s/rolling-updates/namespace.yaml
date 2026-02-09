@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace 
 metadata:
-  name: rolling-update
+  name: rolling-update-demo
