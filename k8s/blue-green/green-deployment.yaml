@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:   
-  name: blue-deployment
-  namespace:  blue-green-ns
-spec:         
+metadata:
+  name: green-deployment
+  namespace: blue-green-ns
+spec:
   replicas: 5
   selector:
     matchLabels:
-      app: blue-app
+      app: green-app
   template:
-    metadata:     
+    metadata:
       labels:
-        app: blue-app 
+        app: green-app
     spec:
-      containers:     
+      containers:
       - name: nginx
         image: nginx:latest
         ports:
