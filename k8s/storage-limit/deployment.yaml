@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pods-with-pre-defined-storage-limit
+  namespace: dev
+spec:
+  containers:
+  - name: ubuntu-container
+    image: ubuntu:22.04
+    command: ["sh","-c"]
+    args: 
+      - |
+        apt-get update &&
+        apt-get install -y vim curl wget &&
+        sleep 3600
+    volumeMounts:
+    - name: storage-volume
+      mountPath: /data
+  volumes:  
+  - name: storage-volume
+    emptyDir: {}
+    sizeLimit: 500Mi
+
+
+
+#Automatically ccreates a pod with a container that has a pre-defined storage limit of 500Mi
+#The container runs an Ubuntu image and installs some basic utilities before sleeping for an hour
+#The storage volume is defined as an emptyDir with the specified size limit.*/
