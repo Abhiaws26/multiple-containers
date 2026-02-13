@@ -4,6 +4,15 @@ metadata:
   name: pods-with-pre-defined-storage-limit
   namespace: dev
 spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
   containers:
   - name: ubuntu-container
     image: ubuntu:22.04
