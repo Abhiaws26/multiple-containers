@@ -6,10 +6,8 @@ metadata:
 data:
   index.html: |
     <html>
-      <head>
-        <title>Green Deployment</title>
-      </head>
-      <body>
-        <h1>This Traffic is Routed From the Green Deployment!</h1>
-      </body>
+    <head><title>Green Deployment</title></head>
+    <body>
+      <h1>This traffic is routed from GREEN deployment</h1>
+    </body>
     </html>

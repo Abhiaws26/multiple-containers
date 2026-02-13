@@ -2,14 +2,12 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: blue-configmap
-  namespace: blue-green-ns  
+  namespace: blue-green-ns
 data:
   index.html: |
     <html>
-      <head>
-        <title>Blue Deployment</title>
-      </head>
-      <body>
-        <h1>This Traffic is Routed From the Blue Deployment!</h1>
-      </body>
+    <head><title>Blue Deployment</title></head>
+    <body>
+      <h1>This traffic is routed from BLUE deployment</h1>
+    </body>
     </html>
