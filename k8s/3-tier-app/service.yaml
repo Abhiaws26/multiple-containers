@@ -32,15 +32,15 @@ spec:
 --- 
 
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
   name: postgres-service
-  namespace: dev  
+  namespace: dev
 spec:
   selector:
     app: db-app
   ports:
-  - protocol: TCP 
+  - protocol: TCP
     port: 5432
-    targetPort: 5432  
+    targetPort: 5432
   type: ClusterIP
