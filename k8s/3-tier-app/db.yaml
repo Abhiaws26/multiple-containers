@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: postgres-container
-        image: postgres:latest
+        image: postgres:15
         envFrom:
         - secretRef:
-            name: postgres-secret  
+            name: postgres-secret   # Reference to the Secret in postgres-secrets.yaml
         ports:
         - containerPort: 5432
         volumeMounts:
