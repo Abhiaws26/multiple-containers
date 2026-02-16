@@ -20,13 +20,13 @@ metadata:
   name: backend-service
   namespace: dev
 spec:
-  selector: 
-    app: backend-app  
+  selector:
+    app: backend
   ports:
-  - protocol: TCP
-    port: 3000
+  - port: 3000
     targetPort: 3000
-  type: ClusterIP 
+  type: ClusterIP
+
 
 
 --- 

@@ -19,7 +19,7 @@ spec:
         image: postgres:15
         envFrom:
         - secretRef:
-            name: postgres-secret   # Secret must contain POSTGRES_USER and POSTGRES_PASSWORD
+            name: postgres-secret
         ports:
         - containerPort: 5432
         volumeMounts:

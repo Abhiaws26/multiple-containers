@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fd-deployment
+  name: frontend-deployment
   namespace: dev
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: fd-app 
+      app: frontend
   template:
     metadata:
       labels:
-        app: fd-app 
+        app: frontend
     spec:
-      containers: 
+      containers:
       - name: nginx-container
         image: nginx:latest
         ports:
         - containerPort: 80
-  
