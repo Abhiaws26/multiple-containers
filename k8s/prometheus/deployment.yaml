@@ -17,4 +17,5 @@ spec:
       - name: prometheus-nginx-container
         image: nginx:latest
         ports:
-        - containerPort: 9090
+        - containerPort: 80
+      
