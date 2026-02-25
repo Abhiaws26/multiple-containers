@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi-region-ingress
+  namespace: region-A
+spec:
+  rules:
+  - host: multi-region.local
+    http:
+      paths:
+      - path: /region-a
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service-v1
+            port:
+              number: 80
+      - path: /region-b
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service-v2
+            port:
+              number: 80

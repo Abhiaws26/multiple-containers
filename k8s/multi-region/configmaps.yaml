@@ -1,0 +1,32 @@
+#Config -maps for region-A
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: region-A
+data:
+  index.html: |
+    <html>
+    <head><title>Multi-Region Deployment</title></head>
+    <body>
+      <h1>Welcome to the Multi-Region Deployment!-This is served by REGION-A </h1>
+      <p>This is the default version of the application.</p>
+
+
+---
+
+#Config -maps for region-B
+
+apiVersion: v1
+kind: ConfigMap 
+metadata:
+  name: nginx-config
+  namespace: region-B
+data:
+  index.html: |
+    <html>
+    <head><title>Multi-Region Deployment</title></head>
+    <body>
+      <h1>Welcome to the Multi-Region Deployment!-This is served by REGION-B </h1>
+      <p>This is the canary version of the application.</p>

@@ -1,0 +1,16 @@
+# Version A
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: region-A
+
+
+---
+
+# Version B
+
+apiVersion: v1
+kind: Namespace 
+metadata:
+  name: region-B  
