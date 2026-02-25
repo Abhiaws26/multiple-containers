@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-b
+  namespace: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      varient: b
+      app: canary
+  template:
+    metadata:
+      labels:
+        app: canary
+        varient: b
+    spec:
+      containers:
+      - name: canary
+      image: nginx:latest
