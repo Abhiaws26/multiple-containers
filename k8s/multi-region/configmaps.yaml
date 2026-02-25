@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-config
-  namespace: region-A
+  namespace: region-a
 data:
   index.html: |
     <html>
@@ -22,7 +22,7 @@ apiVersion: v1
 kind: ConfigMap 
 metadata:
   name: nginx-config
-  namespace: region-B
+  namespace: region-b
 data:
   index.html: |
     <html>
