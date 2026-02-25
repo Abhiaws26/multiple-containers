@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: nginx-a
   namespace: dev
-  spec:
+spec:
   replicas: 3
   selector:
     matchLabels:
-      varient: varient a
+      varient: varient-a
       app: canary
   template:
     metadata:
       labels:
-        app: canary 
-        varient: varient a
+        app: canary
+        varient: varient-a
     spec:
       containers:
       - name: canary
-        image: nginx:latest
+      image: nginx:1.25.3
