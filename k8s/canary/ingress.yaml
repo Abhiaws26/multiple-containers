@@ -1,24 +1,26 @@
+
+# Ingress routing (pseudo-example)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: canary-ingress
+  name: nginx-ab-test
   namespace: dev
 spec:
-  rules:  
-  - host: test.local
+  rules:
+  - host: abtest.local
     http:
       paths:
-      - path: /
+      - path: /a
         pathType: Prefix
         backend:
           service:
-            name: nginx-a-service
+            name: nginx-a
             port:
               number: 80
-      - path: /
+      - path: /b
         pathType: Prefix
         backend:
           service:
-            name: nginx-b-service
+            name: nginx-b
             port:
               number: 80

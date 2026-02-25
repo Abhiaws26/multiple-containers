@@ -1,3 +1,4 @@
+# Version B
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,14 +8,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      varient: b
-      app: canary
+      app: nginx
+      variant: b
   template:
     metadata:
       labels:
-        app: canary
-        varient: b
+        app: nginx
+        variant: b
     spec:
       containers:
-      - name: canary
-      image: nginx:latest
+      - name: nginx
+        image: nginx:1.22
+---
