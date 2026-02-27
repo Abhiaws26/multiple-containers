@@ -4,17 +4,17 @@ metadata:
   name: python-flask-app
   namespace: prod
 spec:
-  replicas: 3 
+  replicas: 1
   selector:
     matchLabels:
       app: python-flask-app
   template:
     metadata:
       labels:
-        app: python-flask-app 
+        app: python-flask-app
     spec:
-      containers: 
-      - name: flask-app
-        image: itsverysimple/flask-k8s:latest
-        ports:
-        - containerPort: 5000
+      containers:
+        - name: flask-app
+          image: itsverysimple/flask-k8s:latest
+          ports:
+            - containerPort: 5000
