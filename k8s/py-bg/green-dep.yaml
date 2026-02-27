@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: itsverysimple/flask-k8s:v1-1 
+          image: itsverysimple/python-bg:latest
           ports:
             - containerPort: 5000
           env:
@@ -33,4 +33,3 @@ spec:
               port: 5000
             initialDelaySeconds: 15
             periodSeconds: 20
-              
