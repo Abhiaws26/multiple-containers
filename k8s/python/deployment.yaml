@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app
+  name: python-flask-app
   namespace: prod
 spec:
-  replicas: 3
+  replicas: 3 
   selector:
     matchLabels:
-      app: python-app
+      app: python-flask-app
   template:
     metadata:
       labels:
-        app: python-app
+        app: python-flask-app 
     spec:
-      containers:
-      - name: python-flask-app
+      containers: 
+      - name: flask-app
         image: itsverysimple/flask-k8s:latest
         ports:
         - containerPort: 5000
