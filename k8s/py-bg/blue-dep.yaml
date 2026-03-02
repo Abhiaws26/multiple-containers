@@ -7,7 +7,7 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: python-app
+      app: python-blue-app
   template:
     metadata:
       labels:
@@ -18,19 +18,19 @@ spec:
           image: itsverysimple/python-bg-live:3.0
           ports:
             - containerPort: 5000
-              env:
-              - name: ENVIRONMENT
-                value: "blue"
-                readinessProbe:
-                  httpGet:
-                    path: /health
-                    port: 5000
-                  initialDelaySeconds: 5
-                  periodSeconds: 10
-              livenessProbe:
-                httpGet:
-                  path: /health
-                  port: 5000
-                initialDelaySeconds: 15
-                periodSeconds: 20 
+          env:
+            - name: ENVIRONMENT
+              value: "blue"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20 
                 
