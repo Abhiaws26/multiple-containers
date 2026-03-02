@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: python-blue-app
-  namespace: prod
+  namespace: dev
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: python-blue-app
+      app: python-app
   template:
     metadata:
       labels:
