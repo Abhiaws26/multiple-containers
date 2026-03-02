@@ -7,11 +7,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: python-app
+      app: python-blue-app
   template:
     metadata:
       labels:
-        app: python-app
+        app: python-blue-app
     spec:
       containers:
         - name: python-blue-container
