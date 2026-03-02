@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata: 
-  name: python-bg-service
+  name: python-bg-live-service
   namespace: prod
 spec:
   type: NodePort
   selector: 
-    app: python-bg-app
+    app: python-bg-live-app
     version: blue
   ports:
   - port: 80

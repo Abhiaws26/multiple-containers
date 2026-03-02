@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: python-blue-container
-          image: itsverysimple/python-bg:latest
+          image: itsverysimple/python-bg-live:3.0
           ports:
             - containerPort: 5000
               env:
