@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    stages{
+        stage("Build"){
+            steps{
+                echo "Building the application..."
+                sh "docker build -t itsverysimple/node-ci/cd:v1 ."
+            }
+        }
+        stage("Push"){
+            steps{
+                echo "Loading and pushing the image to Docker Hub..."
+                sh "kind load docker-image itsverysimple/node-ci/cd:v1"
+            }
+        }
+        stage("Deploy"){
+            steps{
+                echo "Setting the image and Deploying the application to Kubernetes..."
+                sh "kubectl set image deployment/node-deployment node-container=itsverysimple/node-ci/cd:v1 -n prod"
+            }
+        }
+
+    }
+}
