@@ -1,21 +1,20 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage ("Build") {
+    stages {
+        stage('Build') {
             steps {
-                sh "docker build -t itsverysimple/ci/cd:v1 ."
-
+                sh 'docker build -t itsverysimple/node-ci/cd:${BUILD_NUMBER} .'
             }
         }
-        stage ("Push") {
+        stage('Load') {
             steps {
-                sh "docker push itsverysimple/ci/cd:v1"
+                sh 'kind load docker-image itsverysimple/node-ci/cd:${BUILD_NUMBER}'
             }
-    }
-    stage ("Deploy") {
-        steps {
-            sh "kubectl apply -f blue-dep.yaml"
+        }
+        stage('Deploy') {
+            steps {
+                sh 'kubectl set image deployment/node-api node-api=itsverysimple/node-ci/cd:${BUILD_NUMBER} -n prod'
+            }
         }
     }
-}
 }
