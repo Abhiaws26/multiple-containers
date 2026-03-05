@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
 
-// Pick version from environment variable, default to v1
+// Default to v1, but allow override via environment variable
 const version = process.env.APP_VERSION || "v1";
 
 app.get('/', (req, res) => {
-  res.json({ message: `Hello from Node API ${version}` });
+  if (version === "v1") {
+    res.json({ message: "Hello from Node API v1" });
+  } else if (version === "v2") {
+    res.json({ message: "Hello from Node API v2" });
+  } else {
+    res.json({ message: `Hello from Node API ${version}` });
+  }
 });
 
 app.get('/health', (req, res) => res.json({ status: "healthy" }));
