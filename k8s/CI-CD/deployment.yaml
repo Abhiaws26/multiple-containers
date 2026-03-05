@@ -15,9 +15,12 @@ spec:
     spec:
       containers:
       - name: node-api
-        image: itsverysimple/node-cicd:v1   
+        image: itsverysimple/node-cicd:v1   # 👈 start with v1
         ports:
         - containerPort: 3000
+        env:
+        - name: APP_VERSION
+          value: "v1"   # 👈 controls response
         readinessProbe:
           httpGet:
             path: /health
